@@ -20,6 +20,7 @@ function App() {
   useEffect(() => {}, [scrollValue]);
   const [foodItems, setFoodItems] = useState([]);
 
+  const [showCart, setShowCart] = useState(false);
   const fetchData = async () => {
     await getAllFoodItems().then((data) => {
       setFoodItems(data);
@@ -28,9 +29,10 @@ function App() {
   useEffect(() => {
     fetchData();
   }, []);
+  console.log("this is my Cart State", showCart);
   return (
     <div>
-      <Navbar />
+      <Navbar setShowCart={setShowCart} />
       {/* <Hero /> */}
       <Routes>
         <Route
@@ -76,7 +78,7 @@ function App() {
                   data={foodItems.filter((n) => n.category === "fruits")}
                 />
               </section>
-              <CartContainer/>
+              {showCart && <CartContainer setShowCart={setShowCart} />}
 
               <MenuContainer />
             </div>

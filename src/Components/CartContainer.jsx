@@ -14,7 +14,7 @@ export default function CartContainer({showCart,setShowCart}) {
     >
       <div className=" w-full flex items-center justify-between p-4 cursor-pointer">
         <motion.div whileTap={{ scale: 0.75 }}>
-          <MdOutlineKeyboardBackspace onClick={()=>{setShowCart(!showCart)}} className="text-slate-600 text-3xl" />
+          <MdOutlineKeyboardBackspace onClick={()=>{setShowCart(showCart=>!showCart)}} className="text-slate-600 text-3xl" />
         </motion.div>
         <p className="text-slate-500 text-2xl font-semibold"> cart</p>
         <motion.p

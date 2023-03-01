@@ -7,9 +7,10 @@ import {TbTruckDelivery} from 'react-icons/tb'
 import {MdFavorite,MdOutlineHelp } from 'react-icons/md'
 import {GiMeal , GiHotMeal} from 'react-icons/gi'
 import { useState } from "react";
+import {motion} from 'framer-motion'
 var size=30;
 
-export default function Navbar() {
+export default function Navbar({setShowCart}) {
     const [nav, setNav]= useState(false);
     const handleNavClick=()=>{
         setNav(!nav);
@@ -37,14 +38,16 @@ export default function Navbar() {
           <input type="text" placeholder="Search Meal " className=" bg-transparent focus:outline-none" />
         </div>
         <div>
-          <button className=" flex justify-center items-center text-white bg-black  py-2 rounded-full">
-            <FaShoppingCart size={20} className="text-white mr-3" /> Cart
-          </button>
+          <motion.button 
+          whileTap={{scale:0.75}}
+          onClick={()=>setShowCart(prev=>!prev)} className=" flex justify-center items-center text-white bg-black  py-2 rounded-full">
+            <FaShoppingCart  size={20} className="text-white mr-3" /> Cart
+          </motion.button>
         </div>
       </div>
       {/* mobile Menu */}
       {/* Overlay */}
-    {nav?<div className="bg-black/80 fixed w-full duration-500 h-screen left-0 top-0 z-10">
+    {nav?<div className="bg-black/80 fixed w-full duration-500 h-screen left-0 top-0 z-100">
 
 </div>:''}
       

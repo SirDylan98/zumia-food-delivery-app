@@ -11,7 +11,7 @@ export default function HomeContainer() {
         <p className='text-base text-orange-500 font-semibold'>Bike Delivery</p>
         <div className=' w-8 h-8 bg-white rounded-full overflow-hidden drop-shadow-xl'>
           <img src={delivery}
-          className='w-full h-full object-contain'
+          className='w-full h-full -z-10 object-contain'
            alt="delivery" />
         </div>
       </div>
