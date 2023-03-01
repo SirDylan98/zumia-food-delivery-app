@@ -14,6 +14,7 @@ import { MdChevronLeft, MdChevronRight } from "react-icons/md";
 import { Route, Routes } from "react-router-dom";
 import CreateContianer from "./Pages/CreateItem";
 import CartContainer from "./Components/CartContainer";
+import { CartContextProvider } from "./Context/CartProvider";
 
 function App() {
   const [scrollValue, setScrollValue] = useState(0);
@@ -32,6 +33,8 @@ function App() {
   console.log("this is my Cart State", showCart);
   return (
     <div>
+      <CartContextProvider>
+
       <Navbar setShowCart={setShowCart} />
       {/* <Hero /> */}
       <Routes>
@@ -86,6 +89,7 @@ function App() {
         />
         <Route path="/create" element={<CreateContianer />} />
       </Routes>
+      </CartContextProvider>
     </div>
   );
 }

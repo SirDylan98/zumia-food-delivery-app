@@ -3,7 +3,14 @@ import { motion } from "framer-motion";
 import { RiRefreshFill } from "react-icons/ri";
 import { MdOutlineKeyboardBackspace } from "react-icons/md";
 import { BiMinus, BiPlus } from "react-icons/bi";
+import { CartProvider } from "../Context/CartProvider";
 export default function CartContainer({showCart,setShowCart}) {
+  const {removeFromCart}=CartProvider();
+  const {currentCart}=CartProvider();
+  const handleRemove =()=>{
+    console.log("The clike is dddddddddddddddddddd")
+    removeFromCart("1677334445141")
+  }
   return (
     <motion.div
     initial={{opacity:0,x:200}}
@@ -33,19 +40,25 @@ export default function CartContainer({showCart,setShowCart}) {
         overflow-y-scroll scrollbar-none"
         >
           {/* Cart item */}
+          {currentCart&&currentCart.map((item,index)=>(
+
           <div
+          key={index}
             className=" w-full p-1 px-2 rounded-lg bg-cartItem flex
             items-center gap-2"
           >
             <img
-              src="https://firebasestorage.googleapis.com/v0/b/netflix-app-5a239.appspot.com/o/Images%2F1677334373731-f6.png?alt=media&token=5042a502-8f13-4f08-8bd1-a514c0ba555d"
+              src={item.imageURL}
               className="w-20 h-20 max-w-[60px] rounded-full object-contain"
               alt=""
             />
             {/* name section */}
             <div className="flex flex-col gap-2">
-              <p className="text-base text-gray-50">Chocolate vanilla</p>
-              <p className="text-sm block text-gray-300 font-semibold">$2.50</p>
+              <p className="text-base text-gray-50">{item.title}</p>
+              <p className="text-sm block text-gray-300 font-semibold">{item.price}<span 
+              onClick={()=>handleRemove()}
+              className="text-red-600 ml-2 cursor-pointer hover:underline ">Remove</span></p>
+              
             </div>
             {/* button section */}
             <div className=" group flex items-center gap-2 ml-auto cursor-pointer ">
@@ -60,6 +73,7 @@ export default function CartContainer({showCart,setShowCart}) {
               </motion.div>
             </div>
           </div>
+          ))}
         </div>
         {/* total section */}
         <div

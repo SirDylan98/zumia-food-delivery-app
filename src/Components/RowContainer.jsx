@@ -1,12 +1,19 @@
 import React, { useEffect, useRef } from "react";
+import { CartProvider } from "../Context/CartProvider";
 import { MdShoppingBasket } from "react-icons/md";
 import { motion } from "framer-motion";
 export default function RowContainer({ flag, data,scrollValue }) {
+  const {addToCart} =CartProvider();
   console.log("This is my data",data)
   const rowContainer=useRef()
   useEffect(()=>{
     rowContainer.current.scrollLeft=+scrollValue;
   },[scrollValue])
+
+  const handleClick =(item)=>{
+    console.log("this is my current item",item)
+    addToCart(item)
+  }
   return (
     <div
     ref={rowContainer}
@@ -31,6 +38,7 @@ export default function RowContainer({ flag, data,scrollValue }) {
           />
           </motion.div>
           <motion.div
+          onClick={()=>handleClick(item)}
             whileTap={{ scale: 0.75 }}
             className="w-8 h-8 rounded-full flex items-center justify-center 
             cursor-pointer hover:shadow-md bg-red-600"
