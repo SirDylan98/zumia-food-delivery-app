@@ -16,7 +16,7 @@ export default function Navbar() {
         console.log("clicked")
     }
   return (
-    <div className="w-full ">
+    <div className="w-full drop-shadow-xl shadow-lg ">
       <div className=" w-full flex justify-between p-4 py-4">
         <div className="flex justify-center items-center">
           <FiMenu onClick={handleNavClick} size={30} className="mr-4" />

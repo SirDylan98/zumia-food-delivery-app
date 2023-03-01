@@ -1,1 +1,5 @@
-{}
+{
+  "projects": {
+    "default": "netflix-app-5a239"
+  }
+}
